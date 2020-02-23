@@ -34,7 +34,7 @@ module scenes
         //initialize and instatiate
         public Start(): void 
         {
-            // create the link to 4D6 mode
+            // link to the 4D6 mode
             this._fourDSix = new objects.Button(config.Game.ASSETS.getResult("4d6"), 320, 400, true);
 
             // create the dice manager with 2 dice
@@ -43,9 +43,9 @@ module scenes
             // allows me to use the "this" keyword in a different scope
             let parent = this;
 
-            // add the "Roll" button
+            // add "Roll" button
             this._rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 300, true, function(){
-                // when the "roll" button is clicked, start the rolling of the dice!
+                // rolling of the dice starts when clicked
                 parent._diceManager.Roll();
             });
 
@@ -57,13 +57,13 @@ module scenes
         
         public Update(): void 
         {
-            // update the dice manager which updates each dice
+            // update the dice manager
             this._diceManager.Update();
         }
         
         public Main(): void 
         {
-            // add the background image
+            // background image
             this.addChild(new objects.Image(config.Game.ASSETS.getResult("background")))
 
             // add the click event to the 4d6 button
@@ -71,7 +71,7 @@ module scenes
                 config.Game.SCENE = scenes.State.FOUR_D_SIX;
             });
 
-            // initialize the dice manager, and add the buttons to the scene
+            // add the buttons to the scene
             this._diceManager.init(this);
             this.addChild(this._rollButton);
             this.addChild(this._fourDSix);
